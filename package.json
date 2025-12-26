@@ -1,0 +1,21 @@
+{
+  "name": "brai_data_dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard for visualizing BRAI dataset and strain metrics from the published API.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "HOST=0.0.0.0 PORT=59022 node src/server.js",
+    "test": "node -e \"console.log('No automated tests defined')\""
+  },
+  "keywords": [
+    "dashboard",
+    "node",
+    "bio",
+    "datasets"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BRAI Data Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>BRAI Data Dashboard</h1>
+      <p>API 사양서(v1.0)에 기반한 데이터 시각화 도구입니다. 서버 환경 변수로 실제 API 연동 여부를 제어합니다.</p>
+    </div>
+    <div class="env">
+      <span id="env-info"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>데이터세트 목록</h2>
+          <p>GET /api/datasets (서버: <code>/api/dataset</code>)</p>
+        </div>
+        <button id="refresh-datasets" class="secondary">새로고침</button>
+      </div>
+      <div id="dataset-list" class="table-wrapper"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>데이터세트 상세</h2>
+          <p>POST /api/dataset/:id (로컬 GET /api/datasets/:id)</p>
+        </div>
+        <div class="controls">
+          <input id="dataset-id-input" type="text" placeholder="예: TC1" aria-label="Dataset ID" />
+          <button id="load-dataset" class="primary">조회</button>
+        </div>
+      </div>
+      <div id="dataset-detail" class="card"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2>계통 상세 &amp; 표현형 시각화</h2>
+          <p>POST /api/strains/:id (로컬 GET /api/strains/:id)</p>
+        </div>
+        <div class="controls">
+          <input id="strain-id-input" type="text" placeholder="예: TC1_001" aria-label="Strain ID" />
+          <button id="load-strain" class="primary">조회</button>
+        </div>
+      </div>
+      <div id="strain-detail" class="card"></div>
+      <div class="chart-container">
+        <canvas id="phenotype-chart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>기본 API URL: <code id="api-base"></code>. 실환경에서는 <code>API_BASE_URL</code>과 <code>USE_MOCK</code> 환경변수를 설정하세요.</small>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>
