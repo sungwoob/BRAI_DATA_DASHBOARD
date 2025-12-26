@@ -14,14 +14,15 @@
 # npm install
 
 # 2) 서버 실행
-USE_MOCK=true PORT=3000 node src/server.js
+HOST=0.0.0.0 PORT=59022 USE_MOCK=true node src/server.js
 # 또는 package.json 스크립트
 npm run dev
 ```
 
-- 기본 포트: `3000`
+- 기본 포트: `59022`
 - 환경변수:
+  - `HOST`: 대시보드 서버가 바인드할 호스트 (기본 `0.0.0.0`). 외부 접속을 열고 싶으면 그대로 두거나 서버 IP/도메인으로 지정합니다.
   - `API_BASE_URL`: 실제 API 베이스 URL (기본 `http://localhost:8000`).
   - `USE_MOCK`: `true`이면 `src/mockData.js`의 예시 응답으로 동작.
 
-서버 기동 후 `http://localhost:3000`으로 접속하면 대시보드를 확인할 수 있습니다. 상단 상태 영역에서 실제 API 연동 모드/모의 모드를 확인할 수 있습니다.
+서버 기동 후 `http://bigsoft.iptime.org:59022`(또는 서버의 공인 도메인/아이피와 포트)로 접속하면 대시보드를 확인할 수 있습니다. 상단 상태 영역에서 실제 API 연동 모드/모의 모드를 확인할 수 있습니다.

@@ -4,7 +4,8 @@ const fs = require('fs');
 const { URL } = require('url');
 const { getDatasetList, getDatasetDetail, getStrainDetail } = require('./mockData');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 59022;
+const HOST = process.env.HOST || '0.0.0.0';
 const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:8000';
 const USE_MOCK = process.env.USE_MOCK === 'true';
 
@@ -111,7 +112,8 @@ const server = http.createServer(async (req, res) => {
   serveStatic(res, filePath);
 });
 
-server.listen(PORT, () => {
-  log(`Dashboard server running at http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  const displayHost = HOST === '0.0.0.0' ? 'localhost' : HOST;
+  log(`Dashboard server running at http://${displayHost}:${PORT}`);
   log(`API base: ${API_BASE_URL} | Using mock data: ${USE_MOCK}`);
 });
